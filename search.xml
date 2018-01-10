@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[设计模式二：工厂方法模式]]></title>
+    <url>%2F2018%2F01%2F10%2Fdesign-patterns-02%2F</url>
+    <content type="text"><![CDATA[工厂方法模式含义官方：定义一个用于创建对象的接口，让子类决定实例化哪一个类。 白话：建设一个工厂，客户需要什么产品，工厂都可以对应生产，而不需要关心生产过程。 UML类图 实现方式以鞋厂生产不同类型的鞋子为例： 抽象产品类123456public abstract class Shoes &#123; public abstract void color(); public abstract void size();&#125; 具体的产品类继承于抽象产品类。 12345678910111213141516171819202122232425public class SportShoes extends Shoes &#123; @Override public void color() &#123; System.out.println("红色的运动鞋。"); &#125; @Override public void size() &#123; System.out.println("运动鞋的尺寸为43号。"); &#125;&#125;public class DressShoes extends Shoes &#123; @Override public void color() &#123; System.out.println("黑色的皮鞋。"); &#125; @Override public void size() &#123; System.out.println("皮鞋的尺寸为42号。"); &#125;&#125; 抽象的工厂类负责定义产品对象的产生。 1234public abstract class ShoesFactory &#123; public abstract &lt;T extends Shoes&gt; T createShoes(Class&lt;T&gt; c);&#125; 具体的工厂类负责如何具体生产一个产品对象。 123456789101112131415public class ChineseShoesFactory extends ShoesFactory &#123; @Override public &lt;T extends Shoes&gt; T createShoes(Class&lt;T&gt; c) &#123; Shoes shoes = null; try &#123; //通过反射实例化对象 shoes = (Shoes) Class.forName(c.getName()).newInstance(); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; return (T) shoes; &#125;&#125; 场景类1234567891011121314public class Client &#123; public static void main(String[] args) &#123; ShoesFactory factory = new ChineseShoesFactory(); Shoes sportShoes = factory.createShoes(SportShoes.class); sportShoes.color(); sportShoes.size(); Shoes dressShoes = factory.createShoes(DressShoes.class); dressShoes.color(); dressShoes.size(); &#125;&#125; 简单工厂模式（静态工厂模式）将上述抽象工厂类ShoesFactory去掉，然后将具体工厂类ChineseShoesFactory中的createShoes修改为静态方法，其余保持不变，这就是简单工厂模式。当模块仅需一个工厂类时，就不需要此处的抽象工厂类了，此时便可适用简单工厂模式。 1234567891011121314public class ChineseShoesFactory &#123; public static &lt;T extends Shoes&gt; T createShoes(Class&lt;T&gt; c) &#123; Shoes shoes = null; try &#123; //通过反射实例化对象 shoes = (Shoes) Class.forName(c.getName()).newInstance(); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; return (T) shoes; &#125;&#125; Android中的典型使用BitmapFactory类就是一个比较常见的简单工厂模式的工厂类。 总结工厂方法模式是new一个对象的替代品，在所有需要生成对象的地方都可以使用，但是需要慎重地考虑是否要增加一个工厂类进行管理，增加代码的复杂度。 优点:良好的封装性，高层模块只需要知道产品的抽象类即可，降低了模块间的耦合。缺点：增加了代码的复杂度。 鸣谢参考：《设计模式之禅》、《Android源码设计模式解析与实践》]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Android串口操作库：EZ-SerialPort]]></title>
+    <url>%2F2018%2F01%2F08%2Fandroid-ez-serialport%2F</url>
+    <content type="text"><![CDATA[EZ-SerialPortEZ-SerialPort是基于Google android-serialport-api 修改与扩展的Android串口操作库。 EZ-SerialPort简化了串口的配置与读写操作，支持了多串口通道的操作，支持了多页面串口数据的同时读取功能。 Demo效果如下： Gradle 依赖在app的build.gradle 下添加： 添加依赖如下：123dependencies &#123; compile 'cn.shorr:ez-serialport:0.1.0'&#125; 添加适合的CPU平台ABI，如：1234567defaultConfig &#123; ... ndk &#123; abiFilters "armeabi", "armeabi-v7a", "x86" &#125;&#125; 不配置将默认为所有平台的ABI。 使用12345678910111213141516171819202122232425262728293031323334353637383940414243444546//1.开始串口连接private void startSerialPortConnect() &#123; //配置串口参数 serialPortUtil = new SerialPortUtil(this, new SerialPortConfig("/dev/ttyMT1", 115200), //串口0 new SerialPortConfig("/dev/ttyMT2", 38400) //串口1 ); //设置为调试模式，打印收发数据 serialPortUtil.setDebug(true); //绑定串口服务 serialPortUtil.bindService(); //串口0数据读取监听（可在不同Activity中同时设置监听） serial0Read = new SerialRead(this); serial0Read.registerListener(0/*默认为0，此参数可省略*/, new Serial0ReadListener()); //串口1数据读取监听（可在不同Activity中同时设置监听） serial1Read = new SerialRead(this); serial1Read.registerListener(1, new Serial1ReadListener());&#125;//2.设置串口读取监听private class Serial0ReadListener implements SerialRead.ReadDataListener &#123; @Override public void onReadData(byte[] data) &#123; &#125;&#125;//3.串口发送数据SerialWrite.sendData(Context context, int port, byte[] data)；//如：串口0发送数据SerialWrite.sendData(this, 0/*默认为0，此参数可省略*/, content.getBytes("GBK"));//如：串口1发送数据SerialWrite.sendData(this, 1, content.getBytes("GBK"));//4.停止串口连接private void stopSerialPortConnect() &#123; serial0Read.unRegisterListener(); serial1Read.unRegisterListener(); serialPortUtil.unBindService();&#125;//5.获取设备所有的串口信息SerialPortFinder serialPortFinder = new SerialPortFinder();String[] devices = serialPortFinder.getAllDevicesPath(); 开发建议由于Android各硬件平台与驱动的差异性，在接收串口数据，即在通过监听获取byte[]字节数组时，一条完整的指令数据有可能被无规律分隔为多条byte[]字节数组。所以此时，需要将多条byte[]字节数组拼接为一条完整的指令，以便于指令的解析工作。 所以，在串口数据格式制定的初期一定要做好相关工作。比如，可以在数据格式中指定开始标记、数据长度、结束标记等，这样可以方便数据的拼接以及校验等工作。 Githubhttps://github.com/shorr/EZ-SerialPort]]></content>
+      <categories>
+        <category>Android开发</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>开源库</tag>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[设计模式一：单例模式]]></title>
     <url>%2F2018%2F01%2F02%2Fdesign-patterns-01%2F</url>
     <content type="text"><![CDATA[单例模式含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&#123; private static Singleton instance; private Singleton()&#123; &#125; public static synchronized Singleton getInstance()&#123; if(instance == null)&#123; instance = new Singleton(); &#125; return instance; &#125; &#125; 该方式单例在使用时才会实例化，synchronized保证了多线程下的同步问题，但也导致了每次调用getInstanced方法都要进行同步，造成不必要的开销。类加载快，获取单例慢。 饿汉方式声明一个静态对象，并在类第一次加载的时候进行初始化。 12345678910public class Singleton&#123; private static Singleton instance = new Singleton(); private Singleton()&#123; &#125; public static Singleton getInstance()&#123; return instance; &#125; &#125; 该方式单例在类第一次加载的时候进行实例化，调用getInstanced方法时不会有多线程问题。类加载慢，获取单例快。 双重检锁方式在需要时初始化单例，调用获取单例方法不用进行同步锁。 1234567891011121314151617public class Singleton&#123; private static volatile Singleton instance = null; private Singleton()&#123; &#125; public static Singleton getInstance()&#123; if(instance == null)&#123; //避免不必要的同步操作 synchronized(Singleton.class)&#123; //null情况下创建实例 if(instance == null)&#123; instance = new Singleton(); &#125; &#125; &#125; return instance; &#125; &#125; volatile作用：instance = new Singleton();该语句并不是一个原子操作。它经过如下过程： 1.给instance实例分配内存； 2.调用构造函数，初始化成员字段； 3.将instance对象指向分配的内存空间（此时instance已经不是null了）。 加volatile字段可以保证实例化时按1-2-3顺序执行；否则有可能是1-3-2顺序执行，此时该检锁方式将失效。 该方式资源利用率高，第一次执行getInstance时单例才会被初始化。解决了资源消耗、多余同步、线程安全问题。但是，该方式在某些高并发的情况下出现失效问题，发生概率很小。 静态内部类单例方式最推荐使用的单例实现方式。 12345678910111213public class Singleton&#123; private Singleton()&#123; &#125; public static Singleton getInstance()&#123; return SingletonHolder.instance; &#125; private static class SingletonHolder&#123; private static Singleton instance = new Singleton(); &#125;&#125; 该方式第一次加载Singleton类时不会初始化instance，只有在第一次调用getInstance的时候静态内部类会被加载并进一步完成instance的初始化。此方式还可以保证线程安全。 枚举方式1234567public enum Singleton&#123; INSTANCE; public void doSth()&#123; ... &#125;&#125; 该方式写法简单，默认的枚举实例创建是线程安全的，且在任何情况下它都是一个单例。 总结无论哪种方式，都是将构造函数私有化，并通过静态方法获取一个唯一实例，在这个过程中要保证线程的安全等。 此外还需要特别注意：如果我们的一个单例对象在内存中长久不使用，JVM就认为这个对象是一个垃圾，在CPU资源空闲的情况下该对象会被清理掉，下次再调用时就需要重新产生一个对象。所以在使用某些状态管理的单例时要特别注意。 对一般项目而言推荐：静态内部类单例方式、枚举方式。 鸣谢参考：《Android源码设计模式解析与实践》、《设计模式之禅》 ​]]></content>
@@ -21,7 +46,7 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>开源控件</tag>
+        <tag>开源库</tag>
         <tag>GitHub</tag>
       </tags>
   </entry>
