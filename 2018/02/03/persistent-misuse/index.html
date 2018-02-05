@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="设计模式,读书笔记," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -95,20 +95,18 @@
 
 
 
-<meta name="description" content="含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&amp;#123;  private static Singleton instance;    private Singleton">
-<meta name="keywords" content="设计模式,读书笔记">
+<meta name="description" content="定义 Whether or not the application should remain running at all times — “true” if it should, and “false” if not. The default value is “false”. Applications should not normally set this flag; persistenc">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式一：单例模式">
-<meta property="og:url" content="http://shorr.cn/2018/01/02/design-patterns-01/index.html">
+<meta property="og:title" content="android:persistent误用带来的灾难">
+<meta property="og:url" content="http://shorr.cn/2018/02/03/persistent-misuse/index.html">
 <meta property="og:site_name" content="Shorr&#39;s Notes">
-<meta property="og:description" content="含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&amp;#123;  private static Singleton instance;    private Singleton">
+<meta property="og:description" content="定义 Whether or not the application should remain running at all times — “true” if it should, and “false” if not. The default value is “false”. Applications should not normally set this flag; persistenc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://shorr.cn/src/image/20180102/uml.png">
-<meta property="og:updated_time" content="2018-02-05T12:52:24.501Z">
+<meta property="og:updated_time" content="2018-02-05T12:46:30.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式一：单例模式">
-<meta name="twitter:description" content="含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&amp;#123;  private static Singleton instance;    private Singleton">
-<meta name="twitter:image" content="http://shorr.cn/src/image/20180102/uml.png">
+<meta name="twitter:title" content="android:persistent误用带来的灾难">
+<meta name="twitter:description" content="定义 Whether or not the application should remain running at all times — “true” if it should, and “false” if not. The default value is “false”. Applications should not normally set this flag; persistenc">
 
 
 
@@ -138,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://shorr.cn/2018/01/02/design-patterns-01/"/>
+  <link rel="canonical" href="http://shorr.cn/2018/02/03/persistent-misuse/"/>
 
 
 
 
 
-  <title>设计模式一：单例模式 | Shorr's Notes</title>
+  <title>android:persistent误用带来的灾难 | Shorr's Notes</title>
   
 
 
@@ -295,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shorr.cn/2018/01/02/design-patterns-01/">
+    <link itemprop="mainEntityOfPage" href="http://shorr.cn/2018/02/03/persistent-misuse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shorr">
@@ -312,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式一：单例模式</h1>
+          <h1 class="post-title" itemprop="name headline">android:persistent误用带来的灾难</h1>
         
 
         <div class="post-meta">
@@ -324,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T22:15:00+08:00">
-                2018-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T20:00:00+08:00">
+                2018-02-03
               </time>
             
 
@@ -347,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Android开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Android开发</span>
                   </a>
                 </span>
 
@@ -365,9 +363,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/02/design-patterns-01/#comments" itemprop="discussionUrl">
+                <a href="/2018/02/03/persistent-misuse/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/02/design-patterns-01/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/02/03/persistent-misuse/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,7 +373,7 @@
 
           
           
-             <span id="/2018/01/02/design-patterns-01/" class="leancloud_visitors" data-flag-title="设计模式一：单例模式">
+             <span id="/2018/02/03/persistent-misuse/" class="leancloud_visitors" data-flag-title="android:persistent误用带来的灾难">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,33 +404,22 @@
       
 
       
-        <h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。</p>
-<h3 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h3><p><img src="/src/image/20180102/uml.png" width="60%" height="60%"></p>
-<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><h4 id="懒汉方式"><a href="#懒汉方式" class="headerlink" title="懒汉方式"></a>懒汉方式</h4><p>声明一个静态对象，且在用户第一次调用getInstance时进行初始化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</div><div class="line">      instance = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>该方式单例在使用时才会实例化，<code>synchronized</code>保证了多线程下的同步问题，但也导致了每次调用<code>getInstanced</code>方法都要进行同步，造成不必要的开销。类加载快，获取单例慢。</p>
-<h4 id="饿汉方式"><a href="#饿汉方式" class="headerlink" title="饿汉方式"></a>饿汉方式</h4><p>声明一个静态对象，并在类第一次加载的时候进行初始化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>该方式单例在类第一次加载的时候进行实例化，调用<code>getInstanced</code>方法时不会有多线程问题。类加载慢，获取单例快。</p>
-<h4 id="双重检锁方式"><a href="#双重检锁方式" class="headerlink" title="双重检锁方式"></a>双重检锁方式</h4><p>在需要时初始化单例，调用获取单例方法不用进行同步锁。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123; <span class="comment">//避免不必要的同步操作</span></div><div class="line">      <span class="keyword">synchronized</span>(Singleton.class)&#123; <span class="comment">//null情况下创建实例</span></div><div class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</div><div class="line">          instance = <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>volatile</code>作用：<code>instance = new Singleton();</code>该语句并不是一个原子操作。它经过如下过程：</p>
-<ul>
-<li>1.给instance实例分配内存；</li>
-<li>2.调用构造函数，初始化成员字段；</li>
-<li>3.将instance对象指向分配的内存空间（此时instance已经不是null了）。</li>
+        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
+<p>Whether or not the application should remain running at all times — “true” if it should, and “false” if not. The default value is “false”. Applications should not normally set this flag; persistence mode is intended only for certain system applications.</p>
+</blockquote>
+<p>上述为官网的描述，简言之：persistent属性是用来设置应用是否要一直运行。这个属性是为了系统级应用而设置，常规应用不应该将此属性置true。当被设为true时，此应用将永不会被杀死。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>前段时间由于公司的相关业务，一直在和定制Pad厂商对接相关的技术。我们需求大致为：Pad启动时，我们自己的App将作为默认Launcher随系统一起启动。Pad出厂时我们的App作为系统级应用被一并打进Rom包，App升级时将采用静默安装的方式进行升级，升级过后的App将从系统级应用变为普通用户级应用。此过程可防止App被手动卸载后，依然可以保留初版的系统App。</p>
+<h3 id="App安装升级带来的问题"><a href="#App安装升级带来的问题" class="headerlink" title="App安装升级带来的问题"></a>App安装升级带来的问题</h3><ul>
+<li>从系统App通过静默安装（pm install）升级为普通App，提示安装成功，但打开App时会崩溃。</li>
+<li>通过adb install安装apk，提示安装成功，但打开App依然为旧版App的内容。此时跳转别的页面App会崩溃。</li>
+<li>使用Android Studio安装（pm install），提示安装成功，但打开App依然为旧版App的内容。此时跳转别的页面App会崩溃。</li>
 </ul>
-<p>加<code>volatile</code>字段可以保证实例化时按1-2-3顺序执行；否则有可能是1-3-2顺序执行，此时该检锁方式将失效。</p>
-<p>该方式资源利用率高，第一次执行<code>getInstance</code>时单例才会被初始化。解决了资源消耗、多余同步、线程安全问题。但是，该方式在某些高并发的情况下出现失效问题，发生概率很小。</p>
-<h4 id="静态内部类单例方式"><a href="#静态内部类单例方式" class="headerlink" title="静态内部类单例方式"></a>静态内部类单例方式</h4><p>最推荐使用的单例实现方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> </div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> SingletonHolder.instance;</div><div class="line">  &#125; </div><div class="line">  </div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>该方式第一次加载<code>Singleton</code>类时不会初始化instance，只有在第一次调用<code>getInstance</code>的时候静态内部类会被加载并进一步完成instance的初始化。此方式还可以保证线程安全。</p>
-<h4 id="枚举方式"><a href="#枚举方式" class="headerlink" title="枚举方式"></a>枚举方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton&#123;</div><div class="line">  INSTANCE;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSth</span><span class="params">()</span></span>&#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>该方式写法简单，默认的枚举实例创建是线程安全的，且在任何情况下它都是一个单例。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>无论哪种方式，都是将构造函数私有化，并通过静态方法获取一个唯一实例，在这个过程中要保证线程的安全等。</p>
-<p>此外还需要特别注意：如果我们的一个单例对象在内存中长久不使用，JVM就认为这个对象是一个垃圾，在CPU资源空闲的情况下该对象会被清理掉，下次再调用时就需要重新产生一个对象。所以在使用某些状态管理的单例时要特别注意。</p>
-<p>对一般项目而言推荐：静态内部类单例方式、枚举方式。</p>
-<p>鸣谢参考：《Android源码设计模式解析与实践》、《设计模式之禅》</p>
+<p>注：上述的崩溃log均显示为当前Activity不能强转为当前的Activity，且系统设置里边显示版本号已经是安装后新版的版本号。上述问题重启Pad后，App均变为新版，一切变正常。</p>
+<h3 id="尝试解决上述问题"><a href="#尝试解决上述问题" class="headerlink" title="尝试解决上述问题"></a>尝试解决上述问题</h3><ul>
+<li>在Rom层级监听apk安装成功后，主动kill下App进程后再重启一下App，依然发现上述问题依旧，此方案无效。</li>
+<li>排查App代码，发现注册文件application下<code>android:persistent=&quot;true&quot;</code>,去之。重新打包并内置Rom，测试后，上述问题解决。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>android:persistent=&quot;true&quot;</code>此属性最好只在系统级App下使用，即始终位于/system/app下的App。普通用户级的App要避免此属性的使用。当被设为true时，应用升级时进程将不会被正常杀死，所以才导致了上述问题的发生。</p>
 <p><br><br><br><br><br></p>
 
       
@@ -478,7 +465,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shorr.cn/2018/01/02/design-patterns-01/" title="设计模式一：单例模式">http://shorr.cn/2018/01/02/design-patterns-01/</a>
+    <a href="http://shorr.cn/2018/02/03/persistent-misuse/" title="android:persistent误用带来的灾难">http://shorr.cn/2018/02/03/persistent-misuse/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -493,9 +480,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
         </div>
       
@@ -508,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/20/android-ez-charindexbar/" rel="next" title="Android开源控件：字符索引栏EZ-CharIndexBar">
-                <i class="fa fa-chevron-left"></i> Android开源控件：字符索引栏EZ-CharIndexBar
+              <a href="/2018/01/10/design-patterns-02/" rel="next" title="设计模式二：工厂方法模式">
+                <i class="fa fa-chevron-left"></i> 设计模式二：工厂方法模式
               </a>
             
           </div>
@@ -518,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/08/android-ez-serialport/" rel="prev" title="Android串口操作库：EZ-SerialPort">
-                Android串口操作库：EZ-SerialPort <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/05/design-patterns-03/" rel="prev" title="设计模式三：工厂方法模式、抽象工厂模式对比">
+                设计模式三：工厂方法模式、抽象工厂模式对比 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -682,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#含义"><span class="nav-number">1.</span> <span class="nav-text">含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML类图"><span class="nav-number">2.</span> <span class="nav-text">UML类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式"><span class="nav-number">3.</span> <span class="nav-text">实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉方式"><span class="nav-number">3.1.</span> <span class="nav-text">懒汉方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饿汉方式"><span class="nav-number">3.2.</span> <span class="nav-text">饿汉方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重检锁方式"><span class="nav-number">3.3.</span> <span class="nav-text">双重检锁方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类单例方式"><span class="nav-number">3.4.</span> <span class="nav-text">静态内部类单例方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举方式"><span class="nav-number">3.5.</span> <span class="nav-text">枚举方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App安装升级带来的问题"><span class="nav-number">3.</span> <span class="nav-text">App安装升级带来的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试解决上述问题"><span class="nav-number">4.</span> <span class="nav-text">尝试解决上述问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -870,9 +855,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://shorr.cn/2018/01/02/design-patterns-01/';
-          this.page.identifier = '2018/01/02/design-patterns-01/';
-          this.page.title = '设计模式一：单例模式';
+          this.page.url = 'http://shorr.cn/2018/02/03/persistent-misuse/';
+          this.page.identifier = '2018/02/03/persistent-misuse/';
+          this.page.title = 'android:persistent误用带来的灾难';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://shorrs-notes.disqus.com/embed.js';
