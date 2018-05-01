@@ -104,7 +104,7 @@
 <meta property="og:description" content="含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&amp;#123;  private static Singleton instance;    private Singleton">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://shorr.cn/src/image/20180102/uml.png">
-<meta property="og:updated_time" content="2018-02-05T12:52:24.501Z">
+<meta property="og:updated_time" content="2018-05-01T09:29:30.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式一：单例模式">
 <meta name="twitter:description" content="含义确保某个类只有一个实例，且自实例化后向系统提供这个实例。避免产生多个对象消耗过多的资源。 UML类图 实现方式懒汉方式声明一个静态对象，且在用户第一次调用getInstance时进行初始化。 12345678910111213public class Singleton&amp;#123;  private static Singleton instance;    private Singleton">
@@ -431,7 +431,6 @@
 <p>该方式写法简单，默认的枚举实例创建是线程安全的，且在任何情况下它都是一个单例。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>无论哪种方式，都是将构造函数私有化，并通过静态方法获取一个唯一实例，在这个过程中要保证线程的安全等。</p>
 <p>此外还需要特别注意：如果我们的一个单例对象在内存中长久不使用，JVM就认为这个对象是一个垃圾，在CPU资源空闲的情况下该对象会被清理掉，下次再调用时就需要重新产生一个对象。所以在使用某些状态管理的单例时要特别注意。</p>
-<p>对一般项目而言推荐：静态内部类单例方式、枚举方式。</p>
 <p>鸣谢参考：《Android源码设计模式解析与实践》、《设计模式之禅》</p>
 <p><br><br><br><br><br></p>
 
